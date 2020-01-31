@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = WordListAdapter(this)
+        val adapter = WordListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         wordViewModel.allWords.observe(this, Observer { words->
             //update cached copy
             words?.let {
-                adapter.setWords(it)
+                adapter.submitList(it)
             }
         })
 
