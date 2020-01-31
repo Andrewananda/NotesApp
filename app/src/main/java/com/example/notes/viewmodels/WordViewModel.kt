@@ -26,4 +26,8 @@ class WordViewModel(application: Application):AndroidViewModel(application) {
         repository.insert(word)
     }
 
+    fun clearAll()  = viewModelScope.launch {
+        repository.clear()
+    }
+
 }
