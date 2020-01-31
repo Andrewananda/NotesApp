@@ -15,11 +15,12 @@ abstract class WordRoomDatabase : RoomDatabase() {
         private var INSTANCE: WordRoomDatabase? = null
 
         fun getDatabase(context: Context): WordRoomDatabase {
+            //checking if database is already created
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }
-
+            //Creating database
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
